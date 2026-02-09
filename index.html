@@ -8,142 +8,165 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Inter",sans-serif;
 }
 
-body {
-  height: 100vh;
+body{
+  height:100vh;
   background:
     radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 40%),
-    linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
+    linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
 }
 
 /* Floating emojis */
-.emoji {
-  position: absolute;
-  font-size: 22px;
-  animation: floatUp linear infinite;
-  opacity: 0.8;
-  pointer-events: none;
+.emoji{
+  position:absolute;
+  font-size:22px;
+  animation:floatUp linear infinite;
+  opacity:.75;
+  pointer-events:none;
 }
 
-@keyframes floatUp {
-  0% { transform: translateY(110vh); opacity: 0; }
-  30% { opacity: 1; }
-  100% { transform: translateY(-10vh); opacity: 0; }
+@keyframes floatUp{
+  0%{transform:translateY(110vh);opacity:0;}
+  30%{opacity:1;}
+  100%{transform:translateY(-10vh);opacity:0;}
 }
 
-/* Top message bar */
-#messageBar {
-  position: fixed;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.65);
-  padding: 12px 20px;
-  border-radius: 22px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  display: none;
-  z-index: 50;
-  backdrop-filter: blur(10px);
+/* Message bar */
+#messageBar{
+  position:fixed;
+  top:16px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.65);
+  padding:12px 22px;
+  border-radius:24px;
+  font-size:.95rem;
+  font-weight:600;
+  display:none;
+  z-index:50;
+  backdrop-filter:blur(10px);
 }
 
-/* Glass card */
-.container {
-  width: 90%;
-  max-width: 420px;
-  padding: 34px 28px;
-  text-align: center;
-  background: rgba(255,255,255,0.14);
-  backdrop-filter: blur(16px);
-  border-radius: 30px;
-  box-shadow: 0 30px 70px rgba(0,0,0,0.4);
-  position: relative;
-  z-index: 10;
+/* Card */
+.container{
+  width:92%;
+  max-width:420px;
+  height:420px;
+  padding:32px 24px;
+  text-align:center;
+  background:rgba(255,255,255,0.14);
+  backdrop-filter:blur(18px);
+  border-radius:30px;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  position:relative;
+  z-index:10;
 }
 
-h1 {
-  font-size: 2rem;
-  font-weight: 900;
-  line-height: 1.3;
-  margin-bottom: 40px;
+h1{
+  font-size:2rem;
+  font-weight:900;
+  line-height:1.3;
+  margin-bottom:20px;
 }
 
-/* Buttons */
-#yesBtn, #noBtn {
-  position: absolute;
-  width: 260px;
-  padding: 16px;
-  font-size: 1.15rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 999px;
-  cursor: pointer;
+/* YES button */
+#yesBtn{
+  position:absolute;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%);
+  width:260px;
+  padding:16px;
+  font-size:1.15rem;
+  font-weight:700;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(135deg,#00ffd5,#00c9ff);
+  color:#00363d;
+  cursor:pointer;
+  z-index:20;
 }
 
-#yesBtn {
-  background: linear-gradient(135deg, #00ffd5, #00c9ff);
-  color: #00363d;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 26px;
-}
-
-#noBtn {
-  background: linear-gradient(135deg, #ff416c, #ff4b2b);
-  color: #fff;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 90px;
+/* NO button */
+#noBtn{
+  position:absolute;
+  width:220px;
+  padding:14px;
+  font-size:1.05rem;
+  font-weight:700;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(135deg,#ff416c,#ff4b2b);
+  color:#fff;
+  cursor:pointer;
+  transition:top .35s ease,left .35s ease;
+  z-index:10;
 }
 
 /* Celebration */
-.celebrate {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at top, #111, #000);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  z-index: 30;
+.celebrate{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at top,#111,#000);
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  z-index:30;
 }
 
-.celebrate h2 {
-  font-size: 3rem;
-  font-weight: 900;
-  color: #00ffe0;
-  margin-bottom: 22px;
-  animation: pop 1s infinite alternate;
+.celebrate h2{
+  font-size:3rem;
+  font-weight:900;
+  color:#00ffe0;
+  margin-bottom:22px;
+  animation:pop 1s infinite alternate;
 }
 
-@keyframes pop {
-  from { transform: scale(1); }
-  to { transform: scale(1.15); }
+@keyframes pop{
+  from{transform:scale(1);}
+  to{transform:scale(1.15);}
 }
 
-.gif-box {
-  width: 100%;
-  max-width: 340px;
-  border-radius: 20px;
-  overflow: hidden;
+.gif-box{
+  width:100%;
+  max-width:340px;
+  border-radius:20px;
+  overflow:hidden;
 }
 
-iframe { border: none; }
+iframe{border:none}
 
-/* Hidden music */
-#music { display: none; }
+/* Confetti */
+.confetti{
+  position:absolute;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  animation:confettiFall 2.8s linear forwards;
+}
+
+@keyframes confettiFall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+/* Music hidden */
+#music{display:none}
 </style>
 </head>
 
@@ -165,7 +188,7 @@ iframe { border: none; }
   </div>
 </div>
 
-<!-- 🎵 Mirrors – Justin Timberlake (starts at 1:05) -->
+<!-- 🎵 Music -->
 <iframe
   id="music"
   src="https://www.youtube.com/embed/uuZE_IRwLNI?start=65&autoplay=1&mute=1&loop=1&playlist=uuZE_IRwLNI"
@@ -175,22 +198,24 @@ iframe { border: none; }
 <script>
 /* Floating emojis */
 const emojis = ["😍","❤️","💘","🫶","🥰","😚","🤍"];
-for (let i = 0; i < 40; i++) {
-  const e = document.createElement("div");
-  e.className = "emoji";
-  e.innerText = emojis[Math.floor(Math.random()*emojis.length)];
-  e.style.left = Math.random()*100 + "vw";
-  e.style.animationDuration = (4 + Math.random()*6) + "s";
-  e.style.fontSize = (18 + Math.random()*26) + "px";
+for(let i=0;i<45;i++){
+  const e=document.createElement("div");
+  e.className="emoji";
+  e.innerText=emojis[Math.floor(Math.random()*emojis.length)];
+  e.style.left=Math.random()*100+"vw";
+  e.style.animationDuration=(4+Math.random()*6)+"s";
+  e.style.fontSize=(18+Math.random()*26)+"px";
   document.body.appendChild(e);
 }
 
 /* NO button logic */
-const noBtn = document.getElementById("noBtn");
-const msgBar = document.getElementById("messageBar");
-const music = document.getElementById("music");
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+const container=document.querySelector(".container");
+const msgBar=document.getElementById("messageBar");
+const music=document.getElementById("music");
 
-const messages = [
+const messages=[
  "are sa esa to kya kar liya mene 😅",
  "sa ek bar aur soch lo 🤔",
  "bike nahi sikhaunga mai fir 😤",
@@ -208,46 +233,81 @@ const messages = [
  "bas ek baar YES try karo 😉"
 ];
 
-let msgIndex = 0;
-let musicStarted = false;
+let msgIndex=0;
+let musicStarted=false;
 
-function moveNoButton() {
-  const padding = 20;
-  const btnW = noBtn.offsetWidth;
-  const btnH = noBtn.offsetHeight;
+positionNo();
 
-  const maxX = window.innerWidth - btnW - padding;
-  const maxY = window.innerHeight - btnH - padding;
+function positionNo(){
+  const cRect=container.getBoundingClientRect();
+  const yRect=yesBtn.getBoundingClientRect();
+  const padding=16;
 
-  let x, y;
+  const maxX=cRect.width-noBtn.offsetWidth-padding;
+  const maxY=cRect.height-noBtn.offsetHeight-padding;
 
-  do {
-    x = Math.random() * maxX;
-    y = Math.random() * maxY;
-  } while (y > window.innerHeight - 160); // avoid YES area
+  let x,y,overlap;
 
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+  do{
+    x=Math.random()*maxX;
+    y=Math.random()*maxY;
 
-  msgBar.innerText = messages[msgIndex % messages.length];
-  msgBar.style.display = "block";
+    const nRect={
+      left:cRect.left+x,
+      top:cRect.top+y,
+      right:cRect.left+x+noBtn.offsetWidth,
+      bottom:cRect.top+y+noBtn.offsetHeight
+    };
+
+    overlap=!(
+      nRect.right<yRect.left ||
+      nRect.left>yRect.right ||
+      nRect.bottom<yRect.top ||
+      nRect.top>yRect.bottom
+    );
+  }while(overlap);
+
+  noBtn.style.left=x+"px";
+  noBtn.style.top=y+"px";
+}
+
+function moveNo(){
+  positionNo();
+
+  msgBar.innerText=messages[msgIndex%messages.length];
+  msgBar.style.display="block";
   msgIndex++;
 
-  if (!musicStarted) {
-    music.src = "https://www.youtube.com/embed/uuZE_IRwLNI?start=65&autoplay=1&loop=1&playlist=uuZE_IRwLNI";
-    musicStarted = true;
+  if(!musicStarted){
+    music.src="https://www.youtube.com/embed/uuZE_IRwLNI?start=65&autoplay=1&loop=1&playlist=uuZE_IRwLNI";
+    musicStarted=true;
   }
 }
 
-noBtn.addEventListener("click", moveNoButton);
-noBtn.addEventListener("touchstart", moveNoButton);
+noBtn.addEventListener("click",moveNo);
+noBtn.addEventListener("touchstart",moveNo);
 
-/* YES button */
-document.getElementById("yesBtn").addEventListener("click", () => {
-  document.getElementById("main").style.display = "none";
-  document.getElementById("celebrate").style.display = "flex";
+/* YES click */
+yesBtn.addEventListener("click",()=>{
+  document.getElementById("main").style.display="none";
+  document.getElementById("celebrate").style.display="flex";
+  launchConfetti();
 });
+
+/* Confetti */
+function launchConfetti(){
+  for(let i=0;i<60;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.top="-10px";
+    c.style.backgroundColor=`hsl(${Math.random()*360},100%,70%)`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),3000);
+  }
+}
 </script>
 
 </body>
 </html>
+
