@@ -1,150 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Valentine 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+<!-- Premium readable font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Poppins",sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
-body{
-  min-height:100vh;
+body {
+  min-height: 100vh;
   background:
     radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 40%),
-    linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+    linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
 }
 
 /* Floating hearts */
-.heart{
-  position:absolute;
-  font-size:20px;
+.heart {
+  position: absolute;
+  font-size: 20px;
   animation: floatUp linear infinite;
-  opacity:.7;
-  pointer-events:none;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
-@keyframes floatUp{
-  0%{transform:translateY(100vh);opacity:0;}
-  50%{opacity:1;}
-  100%{transform:translateY(-10vh);opacity:0;}
+@keyframes floatUp {
+  0% { transform: translateY(100vh); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Message banner */
+#messageBar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  padding: 12px 18px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: none;
+  z-index: 50;
+  backdrop-filter: blur(10px);
 }
 
 /* Glass card */
-.container{
-  width:90%;
-  max-width:420px;
-  padding:32px 26px;
-  text-align:center;
-  background:rgba(255,255,255,0.12);
+.container {
+  width: 90%;
+  max-width: 420px;
+  padding: 32px 26px;
+  text-align: center;
+  background: rgba(255,255,255,0.12);
   backdrop-filter: blur(14px);
-  border-radius:28px;
-  box-shadow:0 25px 60px rgba(0,0,0,.35);
-  z-index:10;
+  border-radius: 28px;
+  box-shadow: 0 25px 60px rgba(0,0,0,.35);
+  z-index: 10;
 }
 
-h1{
-  font-size:2rem;
-  font-weight:800;
-  line-height:1.25;
-  color:#ffffff;
-  margin-bottom:36px;
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 34px;
 }
 
 /* Buttons */
-.buttons{
-  display:flex;
-  flex-direction:column;
-  gap:26px;
-  align-items:center;
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  align-items: center;
+  position: relative;
 }
 
-button{
-  width:100%;
-  max-width:280px;
-  padding:18px;
-  font-size:1.2rem;
-  font-weight:700;
-  border:none;
-  border-radius:999px;
-  cursor:pointer;
-  transition:all .3s ease;
+button {
+  width: 100%;
+  max-width: 280px;
+  padding: 18px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .25s ease;
 }
 
-#yesBtn{
-  background:linear-gradient(135deg,#00ffd5,#00c9ff);
-  color:#00363d;
-  box-shadow:0 10px 30px rgba(0,255,213,.35);
+#yesBtn {
+  background: linear-gradient(135deg, #00ffd5, #00c9ff);
+  color: #00363d;
 }
 
-#yesBtn:hover{
-  transform:scale(1.05);
+#yesBtn:hover {
+  transform: scale(1.05);
 }
 
-#noBtn{
-  background:linear-gradient(135deg,#ff416c,#ff4b2b);
-  color:#fff;
-  transform-origin:center top;
+#noBtn {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: #fff;
+  position: absolute;
+  bottom: -80px;
 }
 
-/* Celebration screen */
-.celebrate{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle at top,#111,#000);
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-  z-index:20;
+/* Celebration */
+.celebrate {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #111, #000);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 20;
 }
 
-.celebrate h2{
-  font-size:3rem;
-  font-weight:900;
-  color:#00ffe0;
-  margin-bottom:22px;
-  animation:pop 1s infinite alternate;
-  text-shadow:0 0 20px #00ffe0;
+.celebrate h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #00ffe0;
+  margin-bottom: 22px;
+  animation: pop 1s infinite alternate;
 }
 
-@keyframes pop{
-  from{transform:scale(1);}
-  to{transform:scale(1.15);}
+@keyframes pop {
+  from { transform: scale(1); }
+  to { transform: scale(1.15); }
 }
 
-.gif-box{
-  width:100%;
-  max-width:340px;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 20px 50px rgba(0,0,0,.6);
+.gif-box {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-iframe{
-  border:none;
+iframe {
+  border: none;
 }
 
-/* Hidden music player */
-#music{
-  display:none;
+/* Hidden music */
+#music {
+  display: none;
 }
 </style>
 </head>
 
 <body>
+
+<div id="messageBar"></div>
 
 <div class="container" id="main">
   <h1>SWATI,<br>WILL YOU CARE TO BE MY VALENTINE THIS YEAR? 💘</h1>
@@ -157,75 +175,84 @@ iframe{
 
 <div class="celebrate" id="celebrate">
   <h2>I KNEW IT 😎🔥</h2>
-
   <div class="gif-box">
-    <iframe 
-      src="https://tenor.com/embed/16481466"
-      width="100%" 
-      height="260"
-      allowfullscreen>
-    </iframe>
+    <iframe src="https://tenor.com/embed/16481466" width="100%" height="260"></iframe>
   </div>
 </div>
 
-<!-- 🎵 MUSIC: Mirrors – Justin Timberlake (STARTS AT 1:05) -->
+<!-- 🎵 Mirrors – Justin Timberlake (muted autoplay, starts at 1:05) -->
 <iframe
   id="music"
-  src="https://www.youtube.com/embed/uuZE_IRwLNI?start=65&autoplay=1&loop=1&playlist=uuZE_IRwLNI"
+  src="https://www.youtube.com/embed/uuZE_IRwLNI?start=65&autoplay=1&mute=1&loop=1&playlist=uuZE_IRwLNI"
   allow="autoplay">
 </iframe>
 
 <script>
 /* Floating hearts */
-for(let i=0;i<40;i++){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="💖";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=(3+Math.random()*5)+"s";
-  h.style.fontSize=(16+Math.random()*24)+"px";
+for (let i = 0; i < 35; i++) {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "💖";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (3 + Math.random() * 5) + "s";
+  h.style.fontSize = (16 + Math.random() * 22) + "px";
   document.body.appendChild(h);
 }
 
-/* NO button messages */
-const noBtn=document.getElementById("noBtn");
-const noMessages=[
- "are sa esa to kya kar liya mene 😅",
- "sa ek bar aur soch lo 🤔",
- "bike nahi sikhaunga mai fir 😤",
- "pakka final hai kya 😐",
- "itna bhi bura nahi hu mai 😌",
- "thoda sa ha bol do na 😄",
- "mujhe lagta hai misclick hua 🤭",
- "phone tilt karke dekho 😜",
- "yeh button sirf timepass ke liye hai 😏",
- "last last try 😬",
- "ab to ha banta hai 😎",
- "chocolates free milengi 🍫",
- "movie + popcorn bhi 😋",
- "dramatic pause… 😶",
- "bas ek baar YES try karo 😉"
+/* Music unmute on first touch */
+let musicEnabled = false;
+function enableMusic() {
+  if (!musicEnabled) {
+    document.getElementById("music").src =
+      "https://www.youtube.com/embed/uuZE_IRwLNI?start=65&autoplay=1&loop=1&playlist=uuZE_IRwLNI";
+    musicEnabled = true;
+  }
+}
+document.addEventListener("touchstart", enableMusic, { once: true });
+document.addEventListener("click", enableMusic, { once: true });
+
+/* NO button escape + messages */
+const noBtn = document.getElementById("noBtn");
+const messageBar = document.getElementById("messageBar");
+
+const noMessages = [
+  "are sa esa to kya kar liya mene 😅",
+  "sa ek bar aur soch lo 🤔",
+  "bike nahi sikhaunga mai fir 😤",
+  "pakka final hai kya 😐",
+  "itna bhi bura nahi hu mai 😌",
+  "thoda sa ha bol do na 😄",
+  "mujhe lagta hai misclick hua 🤭",
+  "phone tilt karke dekho 😜",
+  "yeh button sirf timepass ke liye hai 😏",
+  "last last try 😬",
+  "ab to ha banta hai 😎",
+  "chocolates free milengi 🍫",
+  "movie + popcorn bhi 😋",
+  "dramatic pause… 😶",
+  "bas ek baar YES try karo 😉"
 ];
 
-let noClicks=0;
-let scale=1;
+let msgIndex = 0;
 
-noBtn.addEventListener("click",()=>{
-  if(noClicks<noMessages.length){
-    noBtn.innerText=noMessages[noClicks];
-    scale=Math.min(scale+.12,1.55);
-    noBtn.style.transform=`scale(${scale})`;
-    noClicks++;
-  }
-});
+function moveNo() {
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 120);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  messageBar.innerText = noMessages[msgIndex % noMessages.length];
+  messageBar.style.display = "block";
+  msgIndex++;
+}
+
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
 
 /* YES button */
-document.getElementById("yesBtn").addEventListener("click",()=>{
-  document.getElementById("main").style.display="none";
-  document.getElementById("celebrate").style.display="flex";
-
-  // Trigger music (user interaction = allowed)
-  document.getElementById("music").src += "";
+document.getElementById("yesBtn").addEventListener("click", () => {
+  document.getElementById("main").style.display = "none";
+  document.getElementById("celebrate").style.display = "flex";
 });
 </script>
 
