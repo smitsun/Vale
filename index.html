@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine 💖</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: "Poppins","Segoe UI",sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background: linear-gradient(135deg,#ff4d6d,#ffb703);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* Floating hearts */
+.heart{
+  position:absolute;
+  font-size:22px;
+  animation: floatUp linear infinite;
+  opacity:.85;
+  pointer-events:none;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(100vh);opacity:0;}
+  50%{opacity:1;}
+  100%{transform:translateY(-10vh);opacity:0;}
+}
+
+.container{
+  width:100%;
+  max-width:420px;
+  padding:24px;
+  z-index:10;
+}
+
+h1{
+  font-size:2.2rem;
+  font-weight:900;
+  line-height:1.25;
+  color:#fff;
+  margin-bottom:34px;
+  text-shadow:3px 3px 10px rgba(0,0,0,.35);
+}
+
+.buttons{
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+  align-items:center;
+}
+
+button{
+  width:100%;
+  max-width:280px;
+  padding:18px 40px;
+  font-size:1.3rem;
+  font-weight:800;
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+  transition:transform .3s ease;
+}
+
+#yesBtn{
+  background:#00f5d4;
+  color:#00333d;
+}
+
+#noBtn{
+  background:#ff006e;
+  color:#fff;
+  transform-origin:center top;
+}
+
+/* Celebration screen */
+.celebrate{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  z-index:20;
+}
+
+.celebrate h2{
+  font-size:3.2rem;
+  font-weight:900;
+  color:#00ffea;
+  margin-bottom:22px;
+  animation:pop 1s infinite alternate;
+  text-shadow:0 0 12px #00ffea;
+}
+
+@keyframes pop{
+  from{transform:scale(1);}
+  to{transform:scale(1.15);}
+}
+
+.gif-box{
+  width:100%;
+  max-width:340px;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+iframe{
+  border:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="main">
+  <h1>SWATI, WILL YOU CARE TO BE MY VALENTINE THIS YEAR? 💘</h1>
+
+  <div class="buttons">
+    <button id="yesBtn">YES 💖</button>
+    <button id="noBtn">NO 💭</button>
+  </div>
+</div>
+
+<div class="celebrate" id="celebrate">
+  <h2>I KNEW IT 😎🔥</h2>
+
+  <div class="gif-box">
+    <iframe 
+      src="https://tenor.com/embed/16481466"
+      width="100%" 
+      height="260"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<script>
+/* Floating hearts */
+for(let i=0;i<40;i++){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💖";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(3+Math.random()*5)+"s";
+  h.style.fontSize=(18+Math.random()*22)+"px";
+  document.body.appendChild(h);
+}
+
+/* NO button messages */
+const noBtn=document.getElementById("noBtn");
+const noMessages=[
+ "are sa esa to kya kar liya mene 😅",
+ "sa ek bar aur soch lo 🤔",
+ "bike nahi sikhaunga mai fir 😤",
+ "pakka final hai kya 😐",
+ "itna bhi bura nahi hu mai 😌",
+ "thoda sa ha bol do na 😄",
+ "mujhe lagta hai misclick hua 🤭",
+ "phone tilt karke dekho 😜",
+ "yeh button sirf timepass ke liye hai 😏",
+ "last last try 😬",
+ "ab to ha banta hai 😎",
+ "chocolates free milengi 🍫",
+ "movie + popcorn bhi 😋",
+ "dramatic pause… 😶",
+ "bas ek baar YES try karo 😉"
+];
+
+let noClicks=0;
+let scale=1;
+
+noBtn.addEventListener("click",()=>{
+  if(noClicks<noMessages.length){
+    noBtn.innerText=noMessages[noClicks];
+    scale=Math.min(scale+.12,1.55);
+    noBtn.style.transform=`scale(${scale})`;
+    noClicks++;
+  }
+});
+
+/* YES button */
+document.getElementById("yesBtn").addEventListener("click",()=>{
+  document.getElementById("main").style.display="none";
+  document.getElementById("celebrate").style.display="flex";
+});
+</script>
+
+</body>
+</html>
