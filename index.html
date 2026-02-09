@@ -5,30 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Valentine 💖</title>
 
+<!-- Premium Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+
 <style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: "Poppins","Segoe UI",sans-serif;
+  font-family:"Poppins",sans-serif;
 }
 
 body{
   min-height:100vh;
-  background: linear-gradient(135deg,#ff4d6d,#ffb703);
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 40%),
+    linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
   overflow:hidden;
 }
 
 /* Floating hearts */
 .heart{
   position:absolute;
-  font-size:22px;
+  font-size:20px;
   animation: floatUp linear infinite;
-  opacity:.85;
+  opacity:.7;
   pointer-events:none;
 }
 
@@ -38,48 +42,59 @@ body{
   100%{transform:translateY(-10vh);opacity:0;}
 }
 
+/* Glass card */
 .container{
-  width:100%;
+  width:90%;
   max-width:420px;
-  padding:24px;
+  padding:32px 26px;
+  text-align:center;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  border-radius:28px;
+  box-shadow:0 25px 60px rgba(0,0,0,.35);
   z-index:10;
 }
 
 h1{
-  font-size:2.2rem;
-  font-weight:900;
+  font-size:2rem;
+  font-weight:800;
   line-height:1.25;
-  color:#fff;
-  margin-bottom:34px;
-  text-shadow:3px 3px 10px rgba(0,0,0,.35);
+  color:#ffffff;
+  margin-bottom:36px;
 }
 
+/* Buttons */
 .buttons{
   display:flex;
   flex-direction:column;
-  gap:28px;
+  gap:26px;
   align-items:center;
 }
 
 button{
   width:100%;
   max-width:280px;
-  padding:18px 40px;
-  font-size:1.3rem;
-  font-weight:800;
+  padding:18px;
+  font-size:1.2rem;
+  font-weight:700;
   border:none;
   border-radius:999px;
   cursor:pointer;
-  transition:transform .3s ease;
+  transition:all .3s ease;
 }
 
 #yesBtn{
-  background:#00f5d4;
-  color:#00333d;
+  background:linear-gradient(135deg,#00ffd5,#00c9ff);
+  color:#00363d;
+  box-shadow:0 10px 30px rgba(0,255,213,.35);
+}
+
+#yesBtn:hover{
+  transform:scale(1.05);
 }
 
 #noBtn{
-  background:#ff006e;
+  background:linear-gradient(135deg,#ff416c,#ff4b2b);
   color:#fff;
   transform-origin:center top;
 }
@@ -89,7 +104,7 @@ button{
   display:none;
   position:fixed;
   inset:0;
-  background:#000;
+  background:radial-gradient(circle at top,#111,#000);
   flex-direction:column;
   align-items:center;
   justify-content:center;
@@ -98,12 +113,12 @@ button{
 }
 
 .celebrate h2{
-  font-size:3.2rem;
+  font-size:3rem;
   font-weight:900;
-  color:#00ffea;
+  color:#00ffe0;
   margin-bottom:22px;
   animation:pop 1s infinite alternate;
-  text-shadow:0 0 12px #00ffea;
+  text-shadow:0 0 20px #00ffe0;
 }
 
 @keyframes pop{
@@ -114,12 +129,18 @@ button{
 .gif-box{
   width:100%;
   max-width:340px;
-  border-radius:18px;
+  border-radius:20px;
   overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.6);
 }
 
 iframe{
   border:none;
+}
+
+/* Hidden music player */
+#music{
+  display:none;
 }
 </style>
 </head>
@@ -127,7 +148,7 @@ iframe{
 <body>
 
 <div class="container" id="main">
-  <h1>SWATI, WILL YOU CARE TO BE MY VALENTINE THIS YEAR? 💘</h1>
+  <h1>SWATI,<br>WILL YOU CARE TO BE MY VALENTINE THIS YEAR? 💘</h1>
 
   <div class="buttons">
     <button id="yesBtn">YES 💖</button>
@@ -148,6 +169,13 @@ iframe{
   </div>
 </div>
 
+<!-- MUSIC: Mirrors – Justin Timberlake (audio only via YouTube) -->
+<iframe
+  id="music"
+  src="https://www.youtube.com/embed/uuZE_IRwLNI?autoplay=1&loop=1&playlist=uuZE_IRwLNI"
+  allow="autoplay">
+</iframe>
+
 <script>
 /* Floating hearts */
 for(let i=0;i<40;i++){
@@ -156,7 +184,7 @@ for(let i=0;i<40;i++){
   h.innerHTML="💖";
   h.style.left=Math.random()*100+"vw";
   h.style.animationDuration=(3+Math.random()*5)+"s";
-  h.style.fontSize=(18+Math.random()*22)+"px";
+  h.style.fontSize=(16+Math.random()*24)+"px";
   document.body.appendChild(h);
 }
 
@@ -192,10 +220,13 @@ noBtn.addEventListener("click",()=>{
   }
 });
 
-/* YES button */
+/* YES button: show celebration + start music */
 document.getElementById("yesBtn").addEventListener("click",()=>{
   document.getElementById("main").style.display="none";
   document.getElementById("celebrate").style.display="flex";
+
+  // Start music (user interaction = allowed)
+  document.getElementById("music").src += "";
 });
 </script>
 
