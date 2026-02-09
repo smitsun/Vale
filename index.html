@@ -162,7 +162,11 @@ h1 span{color:#d4af37;font-weight:900}
   overflow:hidden;
 }
 
-iframe{width:100%;height:320px;border:none}
+img{
+  width:100%;
+  height:auto;
+  display:block;
+}
 
 /* Confetti */
 .confetti{
@@ -193,8 +197,8 @@ iframe{width:100%;height:320px;border:none}
 <div class="celebrate" id="celebrate">
   <h2>I Knew You’d Say Yes…</h2>
   <div class="gif-box">
-    <!-- Updated celebration GIF here -->
-    <iframe src="https://gifsec.com/wp-content/uploads/2021/05/excited-guy-gif-9.gif"></iframe>
+    <!-- UPDATED GIF -->
+    <img src="https://gifsec.com/wp-content/uploads/2021/05/excited-guy-gif-2.gif" alt="Excited celebration">
   </div>
 </div>
 
@@ -233,6 +237,7 @@ const messages=[
  "Say yes and unlock forever 🔐",
  "My heart is racing… 🥰"
 ];
+
 let idx=0,isMoving=false;
 
 function moveNo(){
@@ -254,7 +259,7 @@ function moveNo(){
 noBtn.addEventListener("click",moveNo);
 noBtn.addEventListener("touchstart",(e)=>{e.preventDefault();moveNo()});
 
-/* YES button */
+/* YES */
 yesBtn.addEventListener("click",()=>{
   document.getElementById("main").style.display="none";
   celebrate.style.display="flex";
