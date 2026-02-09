@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Valentine 💖</title>
 
-<!-- Premium Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
@@ -169,10 +168,10 @@ iframe{
   </div>
 </div>
 
-<!-- MUSIC: Mirrors – Justin Timberlake (audio only via YouTube) -->
+<!-- 🎵 MUSIC: Mirrors – Justin Timberlake (STARTS AT 1:05) -->
 <iframe
   id="music"
-  src="https://www.youtube.com/embed/uuZE_IRwLNI?autoplay=1&loop=1&playlist=uuZE_IRwLNI"
+  src="https://www.youtube.com/embed/uuZE_IRwLNI?start=65&autoplay=1&loop=1&playlist=uuZE_IRwLNI"
   allow="autoplay">
 </iframe>
 
@@ -220,12 +219,12 @@ noBtn.addEventListener("click",()=>{
   }
 });
 
-/* YES button: show celebration + start music */
+/* YES button */
 document.getElementById("yesBtn").addEventListener("click",()=>{
   document.getElementById("main").style.display="none";
   document.getElementById("celebrate").style.display="flex";
 
-  // Start music (user interaction = allowed)
+  // Trigger music (user interaction = allowed)
   document.getElementById("music").src += "";
 });
 </script>
