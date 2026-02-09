@@ -1,157 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Valentine 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Inter",sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
-body{
-  height:100vh;
+body {
+  height: 100vh;
   background:
     radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 40%),
-    linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  color:#fff;
+    linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }
 
-/* Floating hearts */
-.heart{
-  position:absolute;
-  font-size:18px;
-  animation:floatUp linear infinite;
-  opacity:.7;
-  pointer-events:none;
+/* Floating emojis */
+.emoji {
+  position: absolute;
+  font-size: 22px;
+  animation: floatUp linear infinite;
+  opacity: 0.8;
+  pointer-events: none;
 }
 
-@keyframes floatUp{
-  0%{transform:translateY(100vh);opacity:0;}
-  50%{opacity:1;}
-  100%{transform:translateY(-10vh);opacity:0;}
+@keyframes floatUp {
+  0% { transform: translateY(110vh); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
 }
 
 /* Top message bar */
-#messageBar{
-  position:fixed;
-  top:16px;
-  left:50%;
-  transform:translateX(-50%);
-  background:rgba(0,0,0,.6);
-  padding:10px 18px;
-  border-radius:20px;
-  font-size:.95rem;
-  font-weight:600;
-  display:none;
-  z-index:50;
-  backdrop-filter:blur(10px);
+#messageBar {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.65);
+  padding: 12px 20px;
+  border-radius: 22px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: none;
+  z-index: 50;
+  backdrop-filter: blur(10px);
 }
 
-/* Card */
-.container{
-  width:90%;
-  max-width:420px;
-  padding:32px 26px;
-  text-align:center;
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(14px);
-  border-radius:28px;
-  box-shadow:0 25px 60px rgba(0,0,0,.35);
-  position:relative;
-  z-index:10;
+/* Glass card */
+.container {
+  width: 90%;
+  max-width: 420px;
+  padding: 34px 28px;
+  text-align: center;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(16px);
+  border-radius: 30px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 10;
 }
 
-h1{
-  font-size:2rem;
-  font-weight:800;
-  line-height:1.3;
-  margin-bottom:32px;
+h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 40px;
 }
 
 /* Buttons */
-.buttons{
-  position:relative;
-  height:160px; /* fixed area so NO never escapes screen */
+#yesBtn, #noBtn {
+  position: absolute;
+  width: 260px;
+  padding: 16px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
 }
 
-button{
-  width:260px;
-  padding:16px;
-  font-size:1.1rem;
-  font-weight:700;
-  border:none;
-  border-radius:999px;
-  cursor:pointer;
-  transition:transform .25s ease;
+#yesBtn {
+  background: linear-gradient(135deg, #00ffd5, #00c9ff);
+  color: #00363d;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 26px;
 }
 
-/* YES */
-#yesBtn{
-  background:linear-gradient(135deg,#00ffd5,#00c9ff);
-  color:#00363d;
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-}
-
-/* NO */
-#noBtn{
-  background:linear-gradient(135deg,#ff416c,#ff4b2b);
-  color:#fff;
-  position:absolute;
-  left:50%;
-  top:70px;
-  transform:translateX(-50%);
+#noBtn {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: #fff;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 90px;
 }
 
 /* Celebration */
-.celebrate{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle at top,#111,#000);
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-  z-index:20;
+.celebrate {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #111, #000);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 30;
 }
 
-.celebrate h2{
-  font-size:3rem;
-  font-weight:900;
-  color:#00ffe0;
-  margin-bottom:22px;
-  animation:pop 1s infinite alternate;
+.celebrate h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #00ffe0;
+  margin-bottom: 22px;
+  animation: pop 1s infinite alternate;
 }
 
-@keyframes pop{
-  from{transform:scale(1);}
-  to{transform:scale(1.15);}
+@keyframes pop {
+  from { transform: scale(1); }
+  to { transform: scale(1.15); }
 }
 
-.gif-box{
-  width:100%;
-  max-width:340px;
-  border-radius:20px;
-  overflow:hidden;
+.gif-box {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-iframe{border:none}
+iframe { border: none; }
 
 /* Hidden music */
-#music{display:none}
+#music { display: none; }
 </style>
 </head>
 
@@ -162,10 +154,8 @@ iframe{border:none}
 <div class="container" id="main">
   <h1>SWATI,<br>WILL YOU CARE TO BE MY VALENTINE THIS YEAR? 💘</h1>
 
-  <div class="buttons">
-    <button id="yesBtn">YES 💖</button>
-    <button id="noBtn">NO 💭</button>
-  </div>
+  <button id="noBtn">NO 💭</button>
+  <button id="yesBtn">YES 💖</button>
 </div>
 
 <div class="celebrate" id="celebrate">
@@ -183,22 +173,24 @@ iframe{border:none}
 </iframe>
 
 <script>
-/* Floating hearts */
-for(let i=0;i<30;i++){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="💖";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=(3+Math.random()*5)+"s";
-  h.style.fontSize=(14+Math.random()*20)+"px";
-  document.body.appendChild(h);
+/* Floating emojis */
+const emojis = ["😍","❤️","💘","🫶","🥰","😚","🤍"];
+for (let i = 0; i < 40; i++) {
+  const e = document.createElement("div");
+  e.className = "emoji";
+  e.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+  e.style.left = Math.random()*100 + "vw";
+  e.style.animationDuration = (4 + Math.random()*6) + "s";
+  e.style.fontSize = (18 + Math.random()*26) + "px";
+  document.body.appendChild(e);
 }
 
 /* NO button logic */
-const noBtn=document.getElementById("noBtn");
-const messageBar=document.getElementById("messageBar");
+const noBtn = document.getElementById("noBtn");
+const msgBar = document.getElementById("messageBar");
+const music = document.getElementById("music");
 
-const messages=[
+const messages = [
  "are sa esa to kya kar liya mene 😅",
  "sa ek bar aur soch lo 🤔",
  "bike nahi sikhaunga mai fir 😤",
@@ -216,36 +208,44 @@ const messages=[
  "bas ek baar YES try karo 😉"
 ];
 
-let idx=0;
-let musicOn=false;
+let msgIndex = 0;
+let musicStarted = false;
 
-function moveNo(){
-  const area=document.querySelector(".buttons");
-  const maxX=area.offsetWidth-120;
-  const maxY=area.offsetHeight-60;
+function moveNoButton() {
+  const padding = 20;
+  const btnW = noBtn.offsetWidth;
+  const btnH = noBtn.offsetHeight;
 
-  noBtn.style.left=Math.random()*maxX+"px";
-  noBtn.style.top=Math.random()*maxY+"px";
+  const maxX = window.innerWidth - btnW - padding;
+  const maxY = window.innerHeight - btnH - padding;
 
-  messageBar.innerText=messages[idx%messages.length];
-  messageBar.style.display="block";
-  idx++;
+  let x, y;
 
-  /* Start music on FIRST NO touch */
-  if(!musicOn){
-    document.getElementById("music").src=
-      "https://www.youtube.com/embed/uuZE_IRwLNI?start=65&autoplay=1&loop=1&playlist=uuZE_IRwLNI";
-    musicOn=true;
+  do {
+    x = Math.random() * maxX;
+    y = Math.random() * maxY;
+  } while (y > window.innerHeight - 160); // avoid YES area
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  msgBar.innerText = messages[msgIndex % messages.length];
+  msgBar.style.display = "block";
+  msgIndex++;
+
+  if (!musicStarted) {
+    music.src = "https://www.youtube.com/embed/uuZE_IRwLNI?start=65&autoplay=1&loop=1&playlist=uuZE_IRwLNI";
+    musicStarted = true;
   }
 }
 
-noBtn.addEventListener("mouseenter",moveNo);
-noBtn.addEventListener("touchstart",moveNo);
+noBtn.addEventListener("click", moveNoButton);
+noBtn.addEventListener("touchstart", moveNoButton);
 
-/* YES */
-document.getElementById("yesBtn").addEventListener("click",()=>{
-  document.getElementById("main").style.display="none";
-  document.getElementById("celebrate").style.display="flex";
+/* YES button */
+document.getElementById("yesBtn").addEventListener("click", () => {
+  document.getElementById("main").style.display = "none";
+  document.getElementById("celebrate").style.display = "flex";
 });
 </script>
 
