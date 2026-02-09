@@ -1,173 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Valentine 💖</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swati… Will You Be My Valentine? ✧</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Inter",sans-serif;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body{
-  height:100vh;
-  background:
-    radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 40%),
-    linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-}
+    body {
+      height: 100vh;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(220, 180, 120, 0.08), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(180, 120, 200, 0.06), transparent 60%),
+        linear-gradient(135deg, #0a0e17 0%, #111725 50%, #0f1a2e 100%);
+      color: #f5f0e9;
+      font-family: 'Montserrat', sans-serif;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
 
-/* Floating emojis */
-.emoji{
-  position:absolute;
-  font-size:22px;
-  animation:floatUp linear infinite;
-  opacity:.75;
-  pointer-events:none;
-}
+    /* Subtle noise/grain overlay for premium texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>');
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 1;
+    }
 
-@keyframes floatUp{
-  0%{transform:translateY(110vh);opacity:0;}
-  30%{opacity:1;}
-  100%{transform:translateY(-10vh);opacity:0;}
-}
+    /* Floating luxury particles (hearts) */
+    .particle {
+      position: absolute;
+      font-size: 20px;
+      color: rgba(220, 180, 120, 0.7);
+      pointer-events: none;
+      animation: floatUp linear infinite;
+      text-shadow: 0 0 10px rgba(220, 180, 120, 0.5);
+    }
 
-/* Message bar */
-#messageBar{
-  position:fixed;
-  top:16px;
-  left:50%;
-  transform:translateX(-50%);
-  background:rgba(0,0,0,.65);
-  padding:12px 22px;
-  border-radius:24px;
-  font-size:.95rem;
-  font-weight:600;
-  display:none;
-  z-index:50;
-  backdrop-filter:blur(10px);
-}
+    @keyframes floatUp {
+      0%   { transform: translateY(110vh) scale(0.6) rotate(0deg); opacity: 0; }
+      20%  { opacity: 0.9; }
+      100% { transform: translateY(-15vh) scale(1.1) rotate(360deg); opacity: 0; }
+    }
 
-/* Card */
-.container{
-  width:92%;
-  max-width:420px;
-  height:420px;
-  padding:32px 24px;
-  text-align:center;
-  background:rgba(255,255,255,0.14);
-  backdrop-filter:blur(18px);
-  border-radius:30px;
-  box-shadow:0 30px 80px rgba(0,0,0,.45);
-  position:relative;
-  z-index:10;
-}
+    /* Message bar – luxury toast style */
+    #messageBar {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(20, 25, 40, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      color: #d4af37;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 500;
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      display: none;
+      z-index: 100;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
 
-h1{
-  font-size:2rem;
-  font-weight:900;
-  line-height:1.3;
-  margin-bottom:20px;
-}
+    /* Main card – premium glassmorphism */
+    .container {
+      width: 90%;
+      max-width: 460px;
+      padding: 60px 40px;
+      text-align: center;
+      background: rgba(15, 20, 35, 0.38);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 32px;
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6),
+                  inset 0 0 60px rgba(220, 180, 120, 0.04);
+      position: relative;
+      z-index: 10;
+    }
 
-/* YES button */
-#yesBtn{
-  position:absolute;
-  bottom:24px;
-  left:50%;
-  transform:translateX(-50%);
-  width:260px;
-  padding:16px;
-  font-size:1.15rem;
-  font-weight:700;
-  border:none;
-  border-radius:999px;
-  background:linear-gradient(135deg,#00ffd5,#00c9ff);
-  color:#00363d;
-  cursor:pointer;
-  z-index:20;
-}
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.1rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin-bottom: 40px;
+      color: #f5f0e9;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
 
-/* NO button */
-#noBtn{
-  position:absolute;
-  width:220px;
-  padding:14px;
-  font-size:1.05rem;
-  font-weight:700;
-  border:none;
-  border-radius:999px;
-  background:linear-gradient(135deg,#ff416c,#ff4b2b);
-  color:#fff;
-  cursor:pointer;
-  transition:top .35s ease,left .35s ease;
-  z-index:10;
-}
+    h1 span {
+      color: #d4af37;
+      font-weight: 900;
+    }
 
-/* Celebration */
-.celebrate{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle at top,#111,#000);
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-  z-index:30;
-}
+    /* YES button – luxurious gradient + shine */
+    #yesBtn {
+      position: relative;
+      bottom: auto;
+      width: 280px;
+      padding: 18px 0;
+      margin: 40px auto 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #0f141f;
+      background: linear-gradient(135deg, #d4af37, #f0d08c, #d4af37);
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      box-shadow: 0 12px 40px rgba(212, 175, 55, 0.35);
+      transition: all 0.4s ease;
+      overflow: hidden;
+      z-index: 20;
+    }
 
-.celebrate h2{
-  font-size:3rem;
-  font-weight:900;
-  color:#00ffe0;
-  margin-bottom:22px;
-  animation:pop 1s infinite alternate;
-}
+    #yesBtn:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
+    }
 
-@keyframes pop{
-  from{transform:scale(1);}
-  to{transform:scale(1.15);}
-}
+    #yesBtn::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: linear-gradient(transparent, rgba(255,255,255,0.4), transparent);
+      transform: translateX(-100%) rotate(45deg);
+      transition: transform 0.7s;
+    }
 
-.gif-box{
-  width:100%;
-  max-width:340px;
-  border-radius:20px;
-  overflow:hidden;
-}
+    #yesBtn:hover::before {
+      transform: translateX(100%) rotate(45deg);
+    }
 
-iframe{border:none}
+    /* NO button – elegant but evasive */
+    #noBtn {
+      position: absolute;
+      padding: 16px 36px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e0e0e0;
+      background: linear-gradient(135deg, #2a2f45, #1e2338);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      z-index: 5;
+    }
 
-/* Confetti */
-.confetti{
-  position:absolute;
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  animation:confettiFall 2.8s linear forwards;
-}
+    /* Celebration screen */
+    .celebrate {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #0a0e17, #111725);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      z-index: 50;
+    }
 
-@keyframes confettiFall{
-  to{
-    transform:translateY(110vh) rotate(720deg);
-    opacity:0;
-  }
-}
+    .celebrate h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.8rem;
+      font-weight: 900;
+      color: #d4af37;
+      margin-bottom: 30px;
+      text-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
 
-/* Music hidden */
-#music{display:none}
-</style>
+    @keyframes glow {
+      from { text-shadow: 0 0 20px rgba(212,175,55,0.3); }
+      to   { text-shadow: 0 0 60px rgba(212,175,55,0.7), 0 0 100px rgba(212,175,55,0.4); }
+    }
+
+    .gif-box {
+      width: 100%;
+      max-width: 380px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.7);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    iframe { border: none; width: 100%; height: 300px; }
+
+    /* Confetti – more elegant colors */
+    .confetti {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      animation: confettiFall 4s linear forwards;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    @keyframes confettiFall {
+      to {
+        transform: translateY(110vh) rotate(1080deg);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -175,139 +232,130 @@ iframe{border:none}
 <div id="messageBar"></div>
 
 <div class="container" id="main">
-  <h1>SWATI,<br>WILL YOU CARE TO BE MY VALENTINE THIS YEAR? 💘</h1>
+  <h1>Swati,<br>Will You Do Me The Honor<br>of Being <span>My Valentine</span> This Year? ✧</h1>
 
-  <button id="noBtn">NO 💭</button>
-  <button id="yesBtn">YES 💖</button>
+  <button id="noBtn">No 💭</button>
+  <button id="yesBtn">Yes, Absolutely 💞</button>
 </div>
 
 <div class="celebrate" id="celebrate">
-  <h2>I KNEW IT 😎🔥</h2>
+  <h2>I Knew You'd Say Yes…</h2>
   <div class="gif-box">
-    <iframe src="https://tenor.com/embed/16481466" width="100%" height="260"></iframe>
+    <!-- You can replace with a more luxurious/romantic gif -->
+    <iframe src="https://tenor.com/embed/16481466" width="100%" height="300"></iframe>
   </div>
 </div>
 
-<!-- 🎵 Music -->
-<iframe
-  id="music"
-  src="https://www.youtube.com/embed/uuZE_IRwLNI?start=65&autoplay=1&mute=1&loop=1&playlist=uuZE_IRwLNI"
-  allow="autoplay">
-</iframe>
-
 <script>
-/* Floating emojis */
-const emojis = ["😍","❤️","💘","🫶","🥰","😚","🤍"];
-for(let i=0;i<45;i++){
-  const e=document.createElement("div");
-  e.className="emoji";
-  e.innerText=emojis[Math.floor(Math.random()*emojis.length)];
-  e.style.left=Math.random()*100+"vw";
-  e.style.animationDuration=(4+Math.random()*6)+"s";
-  e.style.fontSize=(18+Math.random()*26)+"px";
-  document.body.appendChild(e);
+// Floating luxury hearts/particles
+const particlesContainer = document.body;
+const hearts = ["♡", "♥", "💞", "✧", "💫"];
+
+for (let i = 0; i < 35; i++) {
+  const p = document.createElement("div");
+  p.className = "particle";
+  p.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.animationDuration = (6 + Math.random() * 9) + "s";
+  p.style.fontSize = (18 + Math.random() * 28) + "px";
+  p.style.animationDelay = Math.random() * 5 + "s";
+  particlesContainer.appendChild(p);
 }
 
-/* NO button logic */
-const noBtn=document.getElementById("noBtn");
-const yesBtn=document.getElementById("yesBtn");
-const container=document.querySelector(".container");
-const msgBar=document.getElementById("messageBar");
-const music=document.getElementById("music");
+// Elements
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const container = document.querySelector(".container");
+const msgBar = document.getElementById("messageBar");
+const celebrate = document.getElementById("celebrate");
 
-const messages=[
- "are sa esa to kya kar liya mene 😅",
- "sa ek bar aur soch lo 🤔",
- "bike nahi sikhaunga mai fir 😤",
- "pakka final hai kya 😐",
- "itna bhi bura nahi hu mai 😌",
- "thoda sa ha bol do na 😄",
- "mujhe lagta hai misclick hua 🤭",
- "phone tilt karke dekho 😜",
- "yeh button sirf timepass ke liye hai 😏",
- "last last try 😬",
- "ab to ha banta hai 😎",
- "chocolates free milengi 🍫",
- "movie + popcorn bhi 😋",
- "dramatic pause… 😶",
- "bas ek baar YES try karo 😉"
+const messages = [
+  "Are you sure? Think again… 😌",
+  "One more chance, my lady… 🤍",
+  "I promise dinners under the stars 🌙",
+  "You know you want to say yes… 😉",
+  "Last opportunity for eternal pampering 💎",
+  "Misclick? I’ll forgive you… this time 😏",
+  "Chocolates from Switzerland await 🍫",
+  "Private cinema night included 🎥",
+  "Say yes and unlock forever… 🔐",
+  "You’re making my heart race… 🥰"
 ];
 
-let msgIndex=0;
-let musicStarted=false;
+let msgIndex = 0;
 
-positionNo();
+function positionNo() {
+  const cRect = container.getBoundingClientRect();
+  const yRect = yesBtn.getBoundingClientRect();
+  const padding = 30;
 
-function positionNo(){
-  const cRect=container.getBoundingClientRect();
-  const yRect=yesBtn.getBoundingClientRect();
-  const padding=16;
+  const maxX = cRect.width - noBtn.offsetWidth - padding * 2;
+  const maxY = cRect.height - noBtn.offsetHeight - padding * 2;
 
-  const maxX=cRect.width-noBtn.offsetWidth-padding;
-  const maxY=cRect.height-noBtn.offsetHeight-padding;
+  let x, y, overlap;
 
-  let x,y,overlap;
+  do {
+    x = padding + Math.random() * maxX;
+    y = padding + Math.random() * maxY;
 
-  do{
-    x=Math.random()*maxX;
-    y=Math.random()*maxY;
-
-    const nRect={
-      left:cRect.left+x,
-      top:cRect.top+y,
-      right:cRect.left+x+noBtn.offsetWidth,
-      bottom:cRect.top+y+noBtn.offsetHeight
+    const nRect = {
+      left: cRect.left + x,
+      top: cRect.top + y,
+      right: cRect.left + x + noBtn.offsetWidth,
+      bottom: cRect.top + y + noBtn.offsetHeight
     };
 
-    overlap=!(
-      nRect.right<yRect.left ||
-      nRect.left>yRect.right ||
-      nRect.bottom<yRect.top ||
-      nRect.top>yRect.bottom
+    overlap = !(
+      nRect.right < yRect.left ||
+      nRect.left > yRect.right ||
+      nRect.bottom < yRect.top ||
+      nRect.top > yRect.bottom
     );
-  }while(overlap);
+  } while (overlap);
 
-  noBtn.style.left=x+"px";
-  noBtn.style.top=y+"px";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
 }
 
-function moveNo(){
+function moveNo() {
   positionNo();
 
-  msgBar.innerText=messages[msgIndex%messages.length];
-  msgBar.style.display="block";
+  msgBar.innerText = messages[msgIndex % messages.length];
+  msgBar.style.display = "block";
   msgIndex++;
 
-  if(!musicStarted){
-    music.src="https://www.youtube.com/embed/uuZE_IRwLNI?start=65&autoplay=1&loop=1&playlist=uuZE_IRwLNI";
-    musicStarted=true;
-  }
+  // Optional: subtle audio start logic here if you add <audio>
 }
 
-noBtn.addEventListener("click",moveNo);
-noBtn.addEventListener("touchstart",moveNo);
+noBtn.addEventListener("click", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
 
-/* YES click */
-yesBtn.addEventListener("click",()=>{
-  document.getElementById("main").style.display="none";
-  document.getElementById("celebrate").style.display="flex";
+// Yes → celebration
+yesBtn.addEventListener("click", () => {
+  document.getElementById("main").style.display = "none";
+  celebrate.style.display = "flex";
   launchConfetti();
 });
 
-/* Confetti */
-function launchConfetti(){
-  for(let i=0;i<60;i++){
-    const c=document.createElement("div");
-    c.className="confetti";
-    c.style.left=Math.random()*100+"vw";
-    c.style.top="-10px";
-    c.style.backgroundColor=`hsl(${Math.random()*360},100%,70%)`;
+// Elegant confetti
+function launchConfetti() {
+  const colors = ["#d4af37", "#f0d08c", "#b8860b", "#e0c070", "#fff8e1"];
+
+  for (let i = 0; i < 80; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.top = "-20px";
+    c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    c.style.animationDuration = (2.5 + Math.random() * 2) + "s";
     document.body.appendChild(c);
-    setTimeout(()=>c.remove(),3000);
+    setTimeout(() => c.remove(), 6000);
   }
 }
+
+// Initial position
+positionNo();
 </script>
 
 </body>
 </html>
-
