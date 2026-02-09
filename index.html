@@ -2,36 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Swati… Will You Be My Valentine? ✧</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
-      height: 100vh;
-      background: 
+      min-height: 100vh;
+      background:
         radial-gradient(circle at 20% 20%, rgba(220, 180, 120, 0.08), transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(180, 120, 200, 0.06), transparent 60%),
         linear-gradient(135deg, #0a0e17 0%, #111725 50%, #0f1a2e 100%);
       color: #f5f0e9;
       font-family: 'Montserrat', sans-serif;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: relative;
     }
-
-    /* Subtle noise/grain overlay for premium texture */
     body::before {
       content: "";
       position: fixed;
@@ -41,135 +33,131 @@
       pointer-events: none;
       z-index: 1;
     }
-
-    /* Floating luxury particles (hearts) */
     .particle {
       position: absolute;
-      font-size: 20px;
-      color: rgba(220, 180, 120, 0.7);
+      font-size: 22px;
+      color: rgba(220, 180, 120, 0.75);
       pointer-events: none;
       animation: floatUp linear infinite;
       text-shadow: 0 0 10px rgba(220, 180, 120, 0.5);
     }
-
     @keyframes floatUp {
-      0%   { transform: translateY(110vh) scale(0.6) rotate(0deg); opacity: 0; }
-      20%  { opacity: 0.9; }
+      0% { transform: translateY(110vh) scale(0.6) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.9; }
       100% { transform: translateY(-15vh) scale(1.1) rotate(360deg); opacity: 0; }
     }
-
-    /* Message bar – luxury toast style */
     #messageBar {
       position: fixed;
-      top: 20px;
+      top: 16px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(20, 25, 40, 0.75);
+      background: rgba(20, 25, 40, 0.8);
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       color: #d4af37;
-      padding: 14px 32px;
+      padding: 12px 28px;
       border-radius: 50px;
       font-size: 1rem;
       font-weight: 500;
-      border: 1px solid rgba(212, 175, 55, 0.18);
+      border: 1px solid rgba(212, 175, 55, 0.2);
       display: none;
       z-index: 100;
       box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-    }
-
-    /* Main card – premium glassmorphism */
-    .container {
-      width: 90%;
-      max-width: 460px;
-      padding: 60px 40px;
+      max-width: 90%;
       text-align: center;
-      background: rgba(15, 20, 35, 0.38);
+    }
+    .container {
+      width: 92%;
+      max-width: 420px;
+      margin: 40px auto;
+      padding: 50px 30px;
+      text-align: center;
+      background: rgba(15, 20, 35, 0.4);
       backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
       border-radius: 32px;
-      border: 1px solid rgba(212, 175, 55, 0.12);
-      box-shadow: 0 40px 120px rgba(0,0,0,0.6),
-                  inset 0 0 60px rgba(220, 180, 120, 0.04);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      box-shadow: 0 30px 100px rgba(0,0,0,0.6),
+                  inset 0 0 50px rgba(220, 180, 120, 0.03);
       position: relative;
       z-index: 10;
     }
-
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3.1rem;
+      font-size: clamp(2.4rem, 6.5vw, 3.2rem);
       font-weight: 700;
-      letter-spacing: -0.5px;
       line-height: 1.15;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
       color: #f5f0e9;
       text-shadow: 0 4px 20px rgba(0,0,0,0.6);
     }
-
     h1 span {
       color: #d4af37;
       font-weight: 900;
     }
-
-    /* YES button – luxurious gradient + shine */
-    #yesBtn {
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      margin-top: 40px;
       position: relative;
-      bottom: auto;
-      width: 280px;
-      padding: 18px 0;
-      margin: 40px auto 0;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.25rem;
+    }
+    #yesBtn {
+      width: 100%;
+      max-width: 340px;
+      padding: 20px 0;
+      font-size: 1.3rem;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
       color: #0f141f;
       background: linear-gradient(135deg, #d4af37, #f0d08c, #d4af37);
       border: none;
       border-radius: 60px;
       cursor: pointer;
-      box-shadow: 0 12px 40px rgba(212, 175, 55, 0.35);
+      box-shadow: 0 12px 40px rgba(212, 175, 55, 0.4);
       transition: all 0.4s ease;
       overflow: hidden;
+      position: relative;
       z-index: 20;
     }
-
     #yesBtn:hover {
-      transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 20px 60px rgba(212, 175, 55, 0.55);
     }
-
     #yesBtn::before {
       content: "";
       position: absolute;
       top: -50%; left: -50%;
       width: 200%; height: 200%;
-      background: linear-gradient(transparent, rgba(255,255,255,0.4), transparent);
+      background: linear-gradient(transparent, rgba(255,255,255,0.35), transparent);
       transform: translateX(-100%) rotate(45deg);
       transition: transform 0.7s;
     }
-
     #yesBtn:hover::before {
       transform: translateX(100%) rotate(45deg);
     }
-
-    /* NO button – elegant but evasive */
     #noBtn {
-      position: absolute;
-      padding: 16px 36px;
-      font-size: 1.1rem;
+      position: relative;
+      width: 100%;
+      max-width: 340px;
+      padding: 18px 0;
+      font-size: 1.2rem;
       font-weight: 600;
       color: #e0e0e0;
       background: linear-gradient(135deg, #2a2f45, #1e2338);
-      border: 1px solid rgba(212, 175, 55, 0.25);
+      border: 1px solid rgba(212, 175, 55, 0.3);
       border-radius: 60px;
       cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       z-index: 5;
     }
-
-    /* Celebration screen */
+    #noBtn.moving {
+      position: absolute;
+      width: auto;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+    }
     .celebrate {
       display: none;
       position: fixed;
@@ -181,34 +169,28 @@
       padding: 40px;
       z-index: 50;
     }
-
     .celebrate h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 4.8rem;
+      font-size: clamp(3.2rem, 8vw, 4.5rem);
       font-weight: 900;
       color: #d4af37;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       text-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
       animation: glow 3s ease-in-out infinite alternate;
     }
-
     @keyframes glow {
       from { text-shadow: 0 0 20px rgba(212,175,55,0.3); }
-      to   { text-shadow: 0 0 60px rgba(212,175,55,0.7), 0 0 100px rgba(212,175,55,0.4); }
+      to { text-shadow: 0 0 60px rgba(212,175,55,0.7), 0 0 100px rgba(212,175,55,0.4); }
     }
-
     .gif-box {
       width: 100%;
-      max-width: 380px;
+      max-width: 400px;
       border-radius: 24px;
       overflow: hidden;
       box-shadow: 0 20px 80px rgba(0,0,0,0.7);
       border: 1px solid rgba(212, 175, 55, 0.2);
     }
-
-    iframe { border: none; width: 100%; height: 300px; }
-
-    /* Confetti – more elegant colors */
+    iframe { border: none; width: 100%; height: 320px; }
     .confetti {
       position: absolute;
       width: 12px;
@@ -217,52 +199,44 @@
       animation: confettiFall 4s linear forwards;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
-
     @keyframes confettiFall {
-      to {
-        transform: translateY(110vh) rotate(1080deg);
-        opacity: 0;
-      }
+      to { transform: translateY(110vh) rotate(1080deg); opacity: 0; }
     }
   </style>
 </head>
-
 <body>
-
 <div id="messageBar"></div>
 
 <div class="container" id="main">
   <h1>Swati,<br>Will You Do Me The Honor<br>of Being <span>My Valentine</span> This Year? ✧</h1>
-
-  <button id="noBtn">No 💭</button>
-  <button id="yesBtn">Yes, Absolutely 💞</button>
+  
+  <div class="buttons">
+    <button id="yesBtn">Yes, Absolutely 💞</button>
+    <button id="noBtn">No 💭</button>
+  </div>
 </div>
 
 <div class="celebrate" id="celebrate">
   <h2>I Knew You'd Say Yes…</h2>
   <div class="gif-box">
-    <!-- You can replace with a more luxurious/romantic gif -->
-    <iframe src="https://tenor.com/embed/16481466" width="100%" height="300"></iframe>
+    <iframe src="https://tenor.com/embed/16481466" width="100%" height="320"></iframe>
   </div>
 </div>
 
 <script>
-// Floating luxury hearts/particles
 const particlesContainer = document.body;
 const hearts = ["♡", "♥", "💞", "✧", "💫"];
-
-for (let i = 0; i < 35; i++) {
+for (let i = 0; i < 40; i++) {
   const p = document.createElement("div");
   p.className = "particle";
   p.innerText = hearts[Math.floor(Math.random() * hearts.length)];
   p.style.left = Math.random() * 100 + "vw";
-  p.style.animationDuration = (6 + Math.random() * 9) + "s";
-  p.style.fontSize = (18 + Math.random() * 28) + "px";
-  p.style.animationDelay = Math.random() * 5 + "s";
+  p.style.animationDuration = (5 + Math.random() * 10) + "s";
+  p.style.fontSize = (16 + Math.random() * 30) + "px";
+  p.style.animationDelay = Math.random() * 6 + "s";
   particlesContainer.appendChild(p);
 }
 
-// Elements
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const container = document.querySelector(".container");
@@ -281,54 +255,41 @@ const messages = [
   "Say yes and unlock forever… 🔐",
   "You’re making my heart race… 🥰"
 ];
-
 let msgIndex = 0;
+let isMoving = false;
 
-function positionNo() {
-  const cRect = container.getBoundingClientRect();
-  const yRect = yesBtn.getBoundingClientRect();
-  const padding = 30;
-
-  const maxX = cRect.width - noBtn.offsetWidth - padding * 2;
-  const maxY = cRect.height - noBtn.offsetHeight - padding * 2;
-
-  let x, y, overlap;
-
-  do {
-    x = padding + Math.random() * maxX;
-    y = padding + Math.random() * maxY;
-
-    const nRect = {
-      left: cRect.left + x,
-      top: cRect.top + y,
-      right: cRect.left + x + noBtn.offsetWidth,
-      bottom: cRect.top + y + noBtn.offsetHeight
-    };
-
-    overlap = !(
-      nRect.right < yRect.left ||
-      nRect.left > yRect.right ||
-      nRect.bottom < yRect.top ||
-      nRect.top > yRect.bottom
-    );
-  } while (overlap);
-
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-}
-
-function moveNo() {
-  positionNo();
-
+function showMessage() {
   msgBar.innerText = messages[msgIndex % messages.length];
   msgBar.style.display = "block";
   msgIndex++;
+  setTimeout(() => { msgBar.style.display = "none"; }, 3000);
+}
 
-  // Optional: subtle audio start logic here if you add <audio>
+function moveNo() {
+  if (!isMoving) {
+    noBtn.classList.add("moving");
+    isMoving = true;
+  }
+
+  const cRect = container.getBoundingClientRect();
+  const padding = 20;
+  const maxX = cRect.width - noBtn.offsetWidth - padding * 2;
+  const maxY = cRect.height - noBtn.offsetHeight - padding * 2;
+
+  let x = padding + Math.random() * maxX;
+  let y = padding + Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  showMessage();
 }
 
 noBtn.addEventListener("click", moveNo);
-noBtn.addEventListener("touchstart", moveNo);
+noBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault(); // Prevent any default touch behavior
+  moveNo();
+});
 
 // Yes → celebration
 yesBtn.addEventListener("click", () => {
@@ -337,25 +298,19 @@ yesBtn.addEventListener("click", () => {
   launchConfetti();
 });
 
-// Elegant confetti
 function launchConfetti() {
   const colors = ["#d4af37", "#f0d08c", "#b8860b", "#e0c070", "#fff8e1"];
-
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < 100; i++) {
     const c = document.createElement("div");
     c.className = "confetti";
     c.style.left = Math.random() * 100 + "vw";
     c.style.top = "-20px";
     c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    c.style.animationDuration = (2.5 + Math.random() * 2) + "s";
+    c.style.animationDuration = (2 + Math.random() * 3) + "s";
     document.body.appendChild(c);
-    setTimeout(() => c.remove(), 6000);
+    setTimeout(() => c.remove(), 8000);
   }
 }
-
-// Initial position
-positionNo();
 </script>
-
 </body>
 </html>
