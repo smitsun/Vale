@@ -109,6 +109,13 @@ button{
   color:#333;
 }
 
+#noMessage{
+  margin-top:20px;
+  font-size:18px;
+  color:#444;
+  font-style:italic;
+}
+
 /* Responsive */
 @media(max-width:480px){
   #question h1{font-size:24px}
@@ -154,6 +161,7 @@ for(let i=0;i<30;i++){
     <button id="yesBtn">YES 💖</button>
     <button id="noBtn">NO 💭</button>
   </div>
+  <p id="noMessage"></p>
 </div>
 
 <!-- Confetti library -->
@@ -166,6 +174,7 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const qText = document.getElementById("questionText");
 const bgMusic = document.getElementById("bgMusic");
+const noMessage = document.getElementById("noMessage");
 
 let noCount = 0;
 let yesScale = 1;
@@ -186,7 +195,7 @@ intro.addEventListener("click",()=>{
 
 noBtn.addEventListener("click",()=>{
   if(noCount < noMessages.length){
-    alert(noMessages[noCount]); // show message
+    noMessage.textContent = noMessages[noCount]; // show message on page
   }
   noCount++;
   yesScale += 0.25;
