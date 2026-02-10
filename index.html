@@ -24,13 +24,12 @@ body{
   font-family:'Poppins',sans-serif;
 }
 
-/* Floating hearts */
-.heart{
+/* Floating emojis */
+.emoji{
   position:absolute;
-  color:#ff5c8a;
-  font-size:16px;
+  font-size:20px;
   animation:float 6s linear infinite;
-  opacity:.6;
+  opacity:.7;
 }
 
 @keyframes float{
@@ -125,15 +124,16 @@ button{
 
 <body>
 
-<!-- Floating hearts -->
+<!-- Floating emojis -->
 <script>
-for(let i=0;i<30;i++){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=(4+Math.random()*4)+"s";
-  document.body.appendChild(h);
+const emojis = ["❤️","💖","💘","💕","🌸","✨"];
+for(let i=0;i<40;i++){
+  const e=document.createElement("div");
+  e.className="emoji";
+  e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+  e.style.left=Math.random()*100+"vw";
+  e.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(e);
 }
 </script>
 
@@ -144,9 +144,9 @@ for(let i=0;i<30;i++){
 <div class="screen" id="intro">
   <div class="envelope">💌</div>
   <div class="intro-text">
-    A message<br>
-    for the most<br>
-    beautiful girl 💖<br><br>
+    to a girl who caught my heart<br>
+    in the First sight and never<br>
+    returned it still.... 💖<br><br>
     Tap to open
   </div>
 </div>
@@ -190,8 +190,8 @@ const noMessages = [
 intro.addEventListener("click",()=>{
   intro.classList.add("hidden");
   question.classList.remove("hidden");
-  bgMusic.currentTime = 129; // 2 minutes 9 seconds
-  bgMusic.play(); // start music at 2:09
+  bgMusic.currentTime = 125; // 2 minutes 5 seconds
+  bgMusic.play(); // start music at 2:05
 });
 
 noBtn.addEventListener("click",()=>{
