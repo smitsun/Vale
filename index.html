@@ -138,7 +138,7 @@ for(let i=0;i<30;i++){
 </script>
 
 <!-- Background music -->
-<audio id="bgMusic" src="music.mp3"></audio>
+<audio id="bgMusic" src="music.mp3" loop></audio>
 
 <!-- SCREEN 1 -->
 <div class="screen" id="intro">
@@ -190,7 +190,8 @@ const noMessages = [
 intro.addEventListener("click",()=>{
   intro.classList.add("hidden");
   question.classList.remove("hidden");
-  bgMusic.play(); // start music
+  bgMusic.currentTime = 129; // 2 minutes 9 seconds
+  bgMusic.play(); // start music at 2:09
 });
 
 noBtn.addEventListener("click",()=>{
