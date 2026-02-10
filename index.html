@@ -130,6 +130,9 @@ for(let i=0;i<30;i++){
 }
 </script>
 
+<!-- Background music -->
+<audio id="bgMusic" src="music.mp3"></audio>
+
 <!-- SCREEN 1 -->
 <div class="screen" id="intro">
   <div class="envelope">💌</div>
@@ -153,22 +156,38 @@ for(let i=0;i<30;i++){
   </div>
 </div>
 
+<!-- Confetti library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 <script>
 const intro = document.getElementById("intro");
 const question = document.getElementById("question");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const qText = document.getElementById("questionText");
+const bgMusic = document.getElementById("bgMusic");
 
 let noCount = 0;
 let yesScale = 1;
 
+const noMessages = [
+  "Sa pehle hi na bol diya❤️‍🩹",
+  "Ese bhi kya kar diya mene sa💔",
+  "Ab bike nahi sikhaunga😤",
+  "No tripssss🥺",
+  "Chalo i give you one last chance, think again🤭"
+];
+
 intro.addEventListener("click",()=>{
   intro.classList.add("hidden");
   question.classList.remove("hidden");
+  bgMusic.play(); // start music
 });
 
 noBtn.addEventListener("click",()=>{
+  if(noCount < noMessages.length){
+    alert(noMessages[noCount]); // show message
+  }
   noCount++;
   yesScale += 0.25;
 
@@ -188,7 +207,15 @@ yesBtn.addEventListener("click",()=>{
     <p style="margin-top:20px;font-size:20px;">
       You just made my day ✨
     </p>
+    <img src="celebration.gif" alt="Celebration" style="margin-top:20px;max-width:300px;">
   `;
+
+  // trigger confetti
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
 });
 </script>
 
